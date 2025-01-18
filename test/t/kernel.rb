@@ -59,11 +59,11 @@ assert('Kernel.loop', '15.3.1.2.8') do
   assert_equal 100, i
 end
 
-# Kernel.p is provided by the mruby-print mrbgem. '15.3.1.2.9'
+# Kernel.p is provided by the mruby-io mrbgem. '15.3.1.2.9'
 
-# Kernel.print is provided by the mruby-print mrbgem. '15.3.1.2.10'
+# Kernel.print is provided by the mruby-io mrbgem. '15.3.1.2.10'
 
-# Kernel.puts is provided by the mruby-print mrbgem. '15.3.1.2.11'
+# Kernel.puts is provided by the mruby-io mrbgem. '15.3.1.2.11'
 
 assert('Kernel.raise', '15.3.1.2.12') do
   assert_raise RuntimeError do
@@ -346,13 +346,13 @@ assert('Kernel#method_missing', '15.3.1.3.30') do
     end
   end
   no_super_test = NoSuperMethodTestClass.new
-  msg = "no superclass method 'no_super_method_named_this'"
+  msg = "no superclass method 'no_super_method_named_this' for NoSuperMethodTestClass"
   assert_raise_with_message(NoMethodError, msg) do
     no_super_test.no_super_method_named_this
   end
 
   a = String.new
-  msg = "undefined method 'no_method_named_this'"
+  msg = "undefined method 'no_method_named_this' for String"
   assert_raise_with_message(NoMethodError, msg) do
     a.no_method_named_this
   end
@@ -377,11 +377,11 @@ assert('Kernel#object_id', '15.3.1.3.33') do
   assert_kind_of Numeric, 1.0.object_id
 end
 
-# Kernel#p is defined in mruby-print mrbgem. '15.3.1.3.34'
+# Kernel#p is defined in mruby-io mrbgem. '15.3.1.3.34'
 
-# Kernel#print is defined in mruby-print mrbgem. '15.3.1.3.35'
+# Kernel#print is defined in mruby-io mrbgem. '15.3.1.3.35'
 
-# Kernel#puts is defined in mruby-print mrbgem. '15.3.1.3.39'
+# Kernel#puts is defined in mruby-io mrbgem. '15.3.1.3.39'
 
 assert('Kernel#raise', '15.3.1.3.40') do
   assert_raise RuntimeError do

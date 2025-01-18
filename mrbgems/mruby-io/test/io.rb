@@ -150,6 +150,30 @@ assert "IO#read(n) with n > IO::BUF_SIZE" do
   end
 end
 
+assert "IO#read(n, buf)" do
+  IO.open(IO.sysopen($mrbtest_io_rfname)) do |io|
+    buf = "12345"
+    assert_same buf, io.read(0, buf)
+    assert_equal "", buf
+
+    buf = "12345"
+    assert_same buf, io.read(5, buf)
+    assert_equal "mruby", buf
+
+    buf = "12345"
+    assert_same buf, io.read(nil, buf)
+    assert_equal " io test\n", buf
+
+    buf = "12345"
+    assert_nil io.read(99, buf)
+    assert_equal "", buf
+
+    buf = "12345"
+    assert_same buf, io.read(0, buf)
+    assert_equal "", buf
+  end
+end
+
 assert('IO#readchar', '15.2.20.5.15') do
   # almost same as IO#getc
   IO.open(IO.sysopen($mrbtest_io_rfname)) do |io|
@@ -565,7 +589,7 @@ assert('IO#sysseek') do
 end
 
 assert('IO#pread') do
-  skip "IO#pread is not implemented on this configuration" unless MRubyIOTestUtil::MRB_WITH_IO_PREAD_PWRITE
+  skip "IO#pread is not implemented on this configuration" unless MRubyIOTestUtil::MRB_USE_IO_PREAD_PWRITE
 
   IO.open(IO.sysopen($mrbtest_io_rfname, 'r'), 'r') do |io|
     assert_equal $mrbtest_io_msg.byteslice(5, 8), io.pread(8, 5)
@@ -577,7 +601,7 @@ assert('IO#pread') do
 end
 
 assert('IO#pwrite') do
-  skip "IO#pwrite is not implemented on this configuration" unless MRubyIOTestUtil::MRB_WITH_IO_PREAD_PWRITE
+  skip "IO#pwrite is not implemented on this configuration" unless MRubyIOTestUtil::MRB_USE_IO_PREAD_PWRITE
 
   IO.open(IO.sysopen($mrbtest_io_wfname, 'w+'), 'w+') do |io|
     assert_equal 6, io.pwrite("Warld!", 7)

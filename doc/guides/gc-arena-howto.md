@@ -1,10 +1,12 @@
+<!-- summary: About GC Arena -->
+
 # How to use `mrb_gc_arena_save()`/`mrb_gc_arena_restore()`/`mrb_gc_protect()`
 
 _This is an English translation of [Matz's blog post][matz blog post]
 written in Japanese._
 _Some parts are updated to reflect recent changes._
 
-[matz blog post]: <https://www.rubyist.net/~matz/20130731.html>
+[matz blog post]: https://www.rubyist.net/~matz/20130731.html
 
 When you are extending mruby using C language, you may encounter
 mysterious "arena overflow error" or memory leak or very slow

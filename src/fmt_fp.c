@@ -265,7 +265,7 @@ mrb_format_float(mrb_float f, char *buf, size_t buf_size, char fmt, int prec, ch
 
   // We now have f as a floating-point number between >= 1 and < 10
   // (or equal to zero), and e contains the absolute value of the power of
-  // 10 exponent. and (dec + 1) == the number of dgits before the decimal.
+  // 10 exponent, and (dec + 1) == the number of digits before the decimal.
 
   // For e, prec is # digits after the decimal
   // For f, prec is # digits after the decimal
@@ -319,7 +319,7 @@ mrb_format_float(mrb_float f, char *buf, size_t buf_size, char fmt, int prec, ch
     }
     if (*rs == '0') {
       // We need to insert a 1
-      if (rs[1] == '.' && fmt != 'f') {
+      if (fmt != 'f' && rs[1] == '.') {
         // We're going to round 9.99 to 10.00
         // Move the decimal point
         rs[0] = '.';

@@ -1,3 +1,5 @@
+<!-- summary: About the Debugger with the `mrdb` Command -->
+
 # How to Use the mruby Debugger
 
 copyright (c) 2014 Specified Non-Profit Corporation mruby Forum
@@ -38,7 +40,7 @@ To confirm mrdb was installed properly, run mrdb with the `--version` option:
 
 ```bash
 $ mrdb --version
-mruby 3.2.0 (2023-02-24)
+mruby 3.3.0 (2024-02-14)
 ```
 
 ## 2.2 Basic Operation
@@ -62,7 +64,7 @@ $ mrdb sample.rb
 You can execute the shell commands listed below:
 
 |     command      | description                                                               |
-|:----------------:|:--------------------------------------------------------------------------|
+| :--------------: | :------------------------------------------------------------------------ |
 |       run        | execute programs                                                          |
 |       step       | execute stepping                                                          |
 |     continue     | execute continuing program                                                |
@@ -83,7 +85,7 @@ You can debug the mruby binary files.
 #### 2.2.2.1 Debugging the binary files
 
 - notice
-To debug mruby binary files, you need to compile mruby files with option `-g`.
+  To debug mruby binary files, you need to compile mruby files with option `-g`.
 
 ```bash
 $ mrbc -g sample.rb
